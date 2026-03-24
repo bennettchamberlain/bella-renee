@@ -9,15 +9,23 @@ import {blockContent} from './objects/blockContent'
 import button from './objects/button'
 import {blockContentTextOnly} from './objects/blockContentTextOnly'
 
+// Ecommerce schemas
+import {product} from './documents/product'
+import {category} from './documents/category'
+import {siteSettings} from './singletons/siteSettings'
+
 // Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/studio/schema-types
 
 export const schemaTypes = [
   // Singletons
   settings,
+  siteSettings,
   // Documents
   page,
   post,
   person,
+  product,
+  category,
   // Objects
   button,
   blockContent,
