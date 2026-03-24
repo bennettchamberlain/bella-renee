@@ -125,6 +125,163 @@ export type Button = {
   link?: Link
 }
 
+export type SanityFileAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+}
+
+export type CategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'category'
+}
+
+export type Product = {
+  _id: string
+  _type: 'product'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  images: Array<{
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    caption?: string
+    _type: 'image'
+    _key: string
+  }>
+  videos?: Array<{
+    asset?: SanityFileAssetReference
+    media?: unknown
+    title?: string
+    thumbnail?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    _type: 'file'
+    _key: string
+  }>
+  price: number
+  compareAtPrice?: number
+  description: string
+  category: CategoryReference
+  variants?: Array<{
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'onesize'
+    color?: string
+    sku?: string
+    stock?: number
+    priceModifier?: number
+    _key: string
+  }>
+  sku?: string
+  inStock: boolean
+  featured?: boolean
+  tags?: Array<string>
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+    ogImage?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+  }
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
+export type Category = {
+  _id: string
+  _type: 'category'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  description?: string
+  image?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  order?: number
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
+export type SiteSettings = {
+  _id: string
+  _type: 'siteSettings'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  siteName: string
+  logo?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  announcementBar?: {
+    enabled?: boolean
+    text?: string
+    link?: string
+  }
+  socialLinks?: {
+    instagram?: string
+    twitter?: string
+    tiktok?: string
+    youtube?: string
+    spotify?: string
+  }
+  footer?: {
+    copyrightText?: string
+    shippingPolicyUrl?: string
+    returnPolicyUrl?: string
+    privacyPolicyUrl?: string
+    contactEmail?: string
+  }
+  emailSignup?: {
+    enabled?: boolean
+    heading?: string
+    description?: string
+    formEndpoint?: string
+  }
+}
+
 export type Settings = {
   _id: string
   _type: 'settings'
@@ -163,22 +320,6 @@ export type Settings = {
     metadataBase?: string
     _type: 'image'
   }
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
 }
 
 export type Page = {
@@ -246,12 +387,6 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type SanityAssistInstructionTask = {
@@ -497,14 +632,19 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
-  | Settings
+  | SanityFileAssetReference
+  | CategoryReference
+  | Product
   | SanityImageCrop
   | SanityImageHotspot
+  | Category
+  | Slug
+  | SiteSettings
+  | Settings
   | Page
   | PersonReference
   | Post
   | Person
-  | Slug
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations
