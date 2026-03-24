@@ -2,6 +2,7 @@ import {client} from '@/sanity/lib/client'
 import {featuredProductsQuery} from '@/lib/queries'
 import ProductCard from '@/components/ProductCard'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
@@ -10,29 +11,30 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Featured Products Section */}
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Horizontal Scroll Grid - Mobile */}
-          <div className="lg:hidden">
-            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-              {featuredProducts.map((product: any) => (
-                <div key={product._id} className="flex-none w-[70vw] snap-start">
-                  <ProductCard
-                    name={product.name}
-                    slug={product.slug.current}
-                    price={product.price}
-                    compareAtPrice={product.compareAtPrice}
-                    image={product.images[0]?.asset.url}
-                    imageAlt={product.images[0]?.alt}
-                  />
-                </div>
-              ))}
-            </div>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] md:h-[70vh] bg-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
+        <Image
+          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1920&q=80"
+          alt="Bella Renee Hero"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="relative h-full flex items-center justify-center text-center px-4">
+          <div>
+            <h1 className="text-5xl md:text-7xl font-bold uppercase mb-4 tracking-wider">
+              Bella Renee
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 uppercase tracking-widest">Official Merch</p>
           </div>
+        </div>
+      </section>
 
-          {/* Regular Grid - Desktop */}
-          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
+      {/* Featured Products - 2 columns max */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {featuredProducts.map((product: any) => (
               <ProductCard
                 key={product._id}
@@ -50,7 +52,7 @@ export default async function Home() {
 
       {/* View All CTA */}
       <section className="py-16 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+        <div className="max-w-6xl mx-auto px-4 text-center">
           <Link
             href="/products"
             className="inline-block border-2 border-white text-white px-12 py-4 font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors"
@@ -60,11 +62,11 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Hero/About Section */}
+      {/* Want More Section */}
       <section className="py-20 border-t border-white/10">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-5xl font-bold uppercase mb-6">Want More?</h2>
-          <p className="text-xl text-gray-300 mb-8">Shop everything Bella Renee!</p>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase mb-6 tracking-wider">Want More?</h2>
+          <p className="text-xl text-gray-300 mb-8 uppercase tracking-wide">Shop everything Bella Renee!</p>
           <Link
             href="/products"
             className="inline-block bg-white text-black px-12 py-4 font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors"

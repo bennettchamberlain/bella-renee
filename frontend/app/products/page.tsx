@@ -11,17 +11,19 @@ export default async function ProductsPage() {
   ])
 
   return (
-    <div className="min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="min-h-screen py-12 md:py-16">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold uppercase text-center mb-4">Shop All</h1>
-          <p className="text-center text-gray-400">Exclusive Bella Renee merch</p>
+          <h1 className="text-4xl md:text-5xl font-bold uppercase text-center mb-4 tracking-wider">
+            Shop All
+          </h1>
+          <p className="text-center text-gray-400 uppercase tracking-wide">Exclusive Bella Renee merch</p>
         </div>
 
-        {/* Category Filter - Simple version */}
+        {/* Category Filter */}
         {categories && categories.length > 0 && (
-          <div className="mb-8 flex flex-wrap justify-center gap-4">
+          <div className="mb-12 flex flex-wrap justify-center gap-4">
             <a
               href="/products"
               className="px-6 py-2 border border-white/20 hover:bg-white hover:text-black transition-colors uppercase text-sm tracking-wide"
@@ -40,8 +42,8 @@ export default async function ProductsPage() {
           </div>
         )}
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Products Grid - 2 columns desktop, 1 mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {products.map((product: any) => (
             <ProductCard
               key={product._id}
