@@ -43,7 +43,7 @@ export default async function ProductsPage() {
         )}
 
         {/* Products Grid - 2 columns desktop, 1 mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
           {products.map((product: any) => (
             <ProductCard
               key={product._id}

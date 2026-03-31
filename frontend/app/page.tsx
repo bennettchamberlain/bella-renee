@@ -31,10 +31,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Featured Products - 2 columns max */}
+      {/* Featured Products - 2 columns max, 1 on mobile */}
       <section className="py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
             {featuredProducts.map((product: any) => (
               <ProductCard
                 key={product._id}

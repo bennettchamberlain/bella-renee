@@ -20,8 +20,8 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <Link href={`/products/${slug}`} className="group block">
-      {/* Large Image - taller aspect ratio */}
-      <div className="relative overflow-hidden bg-white/5 aspect-[3/4] mb-4">
+      {/* Extra Large Image - much taller aspect ratio */}
+      <div className="relative overflow-hidden bg-white/5 aspect-[4/5] mb-6">
         <Image
           src={image}
           alt={imageAlt || name}
@@ -31,17 +31,17 @@ export default function ProductCard({
         />
       </div>
 
-      {/* Product Info */}
-      <div className="space-y-2">
-        <h3 className="text-xl md:text-2xl font-semibold text-white uppercase tracking-wide">
+      {/* Product Info - Larger Text */}
+      <div className="space-y-3">
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase tracking-wide">
           {name}
         </h3>
-        <div className="flex items-center gap-3">
-          <span className="text-lg md:text-xl text-white font-medium">
+        <div className="flex items-center gap-4">
+          <span className="text-xl md:text-2xl lg:text-3xl text-white font-semibold">
             ${price.toFixed(2)} USD
           </span>
           {compareAtPrice && compareAtPrice > price && (
-            <span className="text-gray-500 line-through text-base">
+            <span className="text-gray-500 line-through text-lg md:text-xl">
               ${compareAtPrice.toFixed(2)}
             </span>
           )}
