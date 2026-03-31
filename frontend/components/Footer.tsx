@@ -24,10 +24,95 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Social Media Links */}
+      <div className="border-b border-white/10 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col items-center gap-6">
+            <h3 className="text-xl font-bold text-white uppercase tracking-wider">Follow Bella Renee</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="https://instagram.com/bellareneemusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://tiktok.com/@bellareneemusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                TikTok
+              </a>
+              <a
+                href="https://youtube.com/c/BellaReneeMusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://x.com/bellareneemusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                Twitter/X
+              </a>
+              <a
+                href="https://facebook.com/BellaReneeMusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.bandsintown.com/a/11339806-bella-renee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors uppercase text-sm tracking-wide"
+              >
+                Tour Dates
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Music & Bio Links */}
+      <div className="border-b border-white/10 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+            <a
+              href="https://kannibalen.fanlink.tv/GOOD-GRIEF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-black px-8 py-3 font-bold uppercase hover:bg-gray-200 transition-colors tracking-wider"
+            >
+              Listen to GOOD GR!EF EP
+            </a>
+            <a
+              href="https://hoo.be/bellarenee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-white text-white px-8 py-3 font-bold uppercase hover:bg-white hover:text-black transition-colors tracking-wider"
+            >
+              Artist Bio
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Footer Links */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-gray-400 text-sm">© 2026, Bella Renee</div>
+          <div className="text-gray-400 text-sm">
+            © 2026, Bella Renee - a lot of emotion & a lil bit of bass
+          </div>
 
           <div className="flex gap-6 text-sm text-gray-400">
             <a href="/policies/shipping" className="hover:text-white transition-colors">

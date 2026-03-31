@@ -1,8 +1,22 @@
 import {client} from '@/sanity/lib/client'
 import {allProductsQuery, categoriesQuery} from '@/lib/queries'
 import ProductCard from '@/components/ProductCard'
+import type {Metadata} from 'next'
 
 export const revalidate = 60
+
+export const metadata: Metadata = {
+  title: 'Shop All Merch',
+  description: 'Browse the complete Bella Renee merch collection. Limited edition hoodies, jerseys, crop tops, and more. Official EDM artist apparel.',
+  openGraph: {
+    title: 'Shop All Merch | Bella Renee Official Store',
+    description: 'Browse the complete Bella Renee merch collection. Limited edition hoodies, jerseys, crop tops, and more. Official EDM artist apparel.',
+  },
+  twitter: {
+    title: 'Shop All Merch | Bella Renee Official Store',
+    description: 'Browse the complete Bella Renee merch collection. Limited edition hoodies, jerseys, crop tops, and more. Official EDM artist apparel.',
+  },
+}
 
 export default async function ProductsPage() {
   const [products, categories] = await Promise.all([

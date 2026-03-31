@@ -3,8 +3,14 @@ import {featuredProductsQuery} from '@/lib/queries'
 import ProductCard from '@/components/ProductCard'
 import Link from 'next/link'
 import Image from 'next/image'
+import type {Metadata} from 'next'
 
 export const revalidate = 60 // Revalidate every 60 seconds
+
+export const metadata: Metadata = {
+  title: 'Bella Renee Official Merch | EDM & Drum & Bass Apparel',
+  description: 'Shop exclusive Bella Renee merch. Official hoodies, jerseys, and apparel from the rising EDM & Drum & Bass artist. A lot of emotion & a lil bit of bass.',
+}
 
 export default async function Home() {
   const featuredProducts = await client.fetch(featuredProductsQuery)

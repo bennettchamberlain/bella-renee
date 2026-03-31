@@ -16,6 +16,7 @@ import {resolveOpenGraphImage} from '@/sanity/lib/utils'
 import {handleError} from '@/app/client-utils'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import StructuredData from '@/components/StructuredData'
 import {CartProvider} from '@/context/CartContext'
 
 /**
@@ -28,9 +29,11 @@ export async function generateMetadata(): Promise<Metadata> {
     // Metadata should never contain stega
     stega: false,
   })
-  const title = settings?.title || demo.title
-  const description = settings?.description || demo.description
-
+  
+  // SEO-optimized defaults
+  const title = 'Bella Renee Official Merch | EDM & Drum & Bass Apparel'
+  const description = 'Shop exclusive Bella Renee merch. Official hoodies, jerseys, and apparel from the rising EDM & Drum & Bass artist. A lot of emotion & a lil bit of bass.'
+  
   const ogImage = resolveOpenGraphImage(settings?.ogImage)
   let metadataBase: URL | undefined = undefined
   try {
@@ -40,15 +43,55 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch {
     // ignore
   }
+  
   return {
     metadataBase,
     title: {
-      template: `%s | ${title}`,
+      template: `%s | Bella Renee Official Store`,
       default: title,
     },
-    description: toPlainText(description),
+    description,
+    keywords: [
+      'Bella Renee',
+      'Bella Renee merch',
+      'EDM merch',
+      'Drum and Bass apparel',
+      'EDM artist merch',
+      'Kannibalen Records',
+      'electronic music apparel',
+      'Bella Renee hoodie',
+      'Bella Renee jersey',
+      'official artist merch'
+    ],
+    authors: [{name: 'Bella Renee'}],
+    creator: 'Bella Renee',
     openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: '/',
+      title,
+      description,
+      siteName: 'Bella Renee Official Store',
       images: ogImage ? [ogImage] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: '@bellareneemusic',
+      creator: '@bellareneemusic',
+      images: ogImage ? [ogImage.url] : [],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   }
 }
@@ -71,6 +114,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
 
   return (
     <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
+      <head>
+        <StructuredData />
+      </head>
       <body className="bg-black text-white">
         <CartProvider>
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
