@@ -8,7 +8,7 @@ export default function Footer() {
           <p className="text-gray-400 mb-8">
             Be the first to know about new merch, promos, giveaways & sales!
           </p>
-          <form className="flex gap-2 max-w-md mx-auto">
+          <form className="flex gap-2 max-w-md mx-auto" suppressHydrationWarning>
             <input
               type="email"
               placeholder="Email address"
