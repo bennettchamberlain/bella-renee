@@ -21,8 +21,8 @@ export default async function Home() {
       <section className="relative h-[60vh] md:h-[70vh] bg-gray-900">
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
         <Image
-          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1920&q=80"
-          alt="Bella Renee Hero"
+          src="/images/bella-hero.jpg"
+          alt="Bella Renee - EDM & Drum & Bass Artist"
           fill
           className="object-cover"
           priority

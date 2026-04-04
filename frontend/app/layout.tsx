@@ -35,6 +35,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = 'Shop exclusive Bella Renee merch. Official hoodies, jerseys, and apparel from the rising EDM & Drum & Bass artist. A lot of emotion & a lil bit of bass.'
   
   const ogImage = resolveOpenGraphImage(settings?.ogImage)
+  
+  // Use the Bella Renee hero image for Open Graph if no custom image is set
+  const ogImageUrl = ogImage?.url || '/images/bella-hero.jpg'
+  
   let metadataBase: URL | undefined = undefined
   try {
     metadataBase = settings?.ogImage?.metadataBase
@@ -72,7 +76,12 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       siteName: 'Bella Renee Official Store',
-      images: ogImage ? [ogImage] : [],
+      images: [{
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: 'Bella Renee - EDM & Drum & Bass Artist',
+      }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -80,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       site: '@bellareneemusic',
       creator: '@bellareneemusic',
-      images: ogImage ? [ogImage.url] : [],
+      images: [ogImageUrl],
     },
     robots: {
       index: true,
